@@ -23,6 +23,6 @@
 hs_err_pid*
 /bin/
 /target/
-/.project/
-/.classpath/
+/.project
+/.classpath
 /.externalToolBuilders/
