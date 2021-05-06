@@ -1,0 +1,11 @@
+main: eu.minespot.live_and_death.Main
+name: LiveAndDeath
+version: 0.0.1
+author: MinespotDevs
+description: A plugin implementing human lifecycle in Minecraft.
+commands:
+  ld:
+    description: The default command
+    usage: /ld
+    permission: liveanddeath.player
+    permission-message: You don't have the liveanddeath.player permission.

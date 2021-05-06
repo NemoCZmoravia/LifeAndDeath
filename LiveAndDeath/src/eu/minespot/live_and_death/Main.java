@@ -1,5 +1,16 @@
 package eu.minespot.live_and_death;
 
-public class Main {
+import org.bukkit.plugin.java.JavaPlugin;
 
+public class Main extends JavaPlugin {
+	
+	@Override
+    public void onEnable() {
+		
+    }
+	
+    @Override
+    public void onDisable() {
+    	
+    }
 }
