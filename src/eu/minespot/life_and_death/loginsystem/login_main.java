@@ -1,4 +1,4 @@
-package eu.minespot.live_and_death.loginsystem;
+package eu.minespot.life_and_death.loginsystem;
 
 
 import org.bukkit.Bukkit;

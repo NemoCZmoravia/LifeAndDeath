@@ -1,5 +1,5 @@
-main: eu.minespot.live_and_death.Main
-name: LiveAndDeath
+main: eu.minespot.life_and_death.Main
+name: LifeAndDeath
 version: 0.0.1
 author: MinespotDevs
 description: A plugin implementing human lifecycle in Minecraft.
