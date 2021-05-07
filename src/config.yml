@@ -1,0 +1,4 @@
+# Default config for v 0.0.1
+
+# The maximum amount of players, who can wait to be born in the waiting room.
+waitingRoomPlayerLimit: 2

@@ -14,6 +14,8 @@ public class Main extends JavaPlugin implements Listener{
     public void onEnable() {
 		new login_main(this);
 		System.out.println("enabled");
+		
+		this.saveDefaultConfig();
     }
 	
     @Override
