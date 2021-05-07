@@ -1,4 +1,4 @@
-# LiveAndDeath
+# LifeAndDeath
 A spigot plugin for dying in various ways. lol
 
 ## Life of a player
