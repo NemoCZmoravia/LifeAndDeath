@@ -11,13 +11,16 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.plugin.Plugin;
+import java.util.LinkedList;
+import java.util.UUID;
 
 
 public class login_main implements Listener{
 	private Plugin plugin;
 	private FileConfiguration config;
 	private int waitingRoomPlayerLimit;
-	private int not_playing_players = 0;
+	private LinkedList<UUID> not_playing_players = new LinkedList<>();
+	
 	
 	public login_main(Plugin plugin){
 		this.plugin = plugin;
@@ -30,19 +33,23 @@ public class login_main implements Listener{
 	public void onLogin(PlayerLoginEvent event) {
 		System.out.println("player trying to login");
 		System.out.println(waitingRoomPlayerLimit);
-		if(not_playing_players < waitingRoomPlayerLimit){
+		UUID player_uuid = event.getPlayer().getUniqueId();
+		if(not_playing_players.size() < waitingRoomPlayerLimit){
 			event.allow();
-			not_playing_players++;
-			System.out.println(String.join("Na hru čeká ", Integer.toString(not_playing_players) , " hráčů"));
+			not_playing_players.addLast(player_uuid);
+			System.out.println(player_uuid);
+			System.out.println(String.join("Na hru čeká ", Integer.toString(not_playing_players.size()) , " hráčů"));
 		}else {
 			event.disallow(Result.KICK_FULL, "too many players waiting for game");
 		}
 	}
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
-		if(not_playing_players > 0) {
-			not_playing_players--;
-			System.out.println(String.join("Na hru čeká ", Integer.toString(not_playing_players) , " hráčů"));
+		UUID player_uuid = event.getPlayer().getUniqueId();
+		if(not_playing_players.size() > 0) {
+			//should remove the player from linked list
+			not_playing_players.remove(player_uuid);
+			System.out.println(String.join("Na hru čeká ", Integer.toString(not_playing_players.size()) , " hráčů"));
 		}else {
 			System.out.println("error counting players");
 		}
