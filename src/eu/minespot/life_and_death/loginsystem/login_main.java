@@ -34,24 +34,32 @@ public class login_main implements Listener{
 		System.out.println("player trying to login");
 		System.out.println(waitingRoomPlayerLimit);
 		UUID player_uuid = event.getPlayer().getUniqueId();
-		if(not_playing_players.size() < waitingRoomPlayerLimit){
+		//todo check if player is playing
+		if(false) {
 			event.allow();
-			not_playing_players.addLast(player_uuid);
-			System.out.println(player_uuid);
-			System.out.println(String.join("Na hru čeká ", Integer.toString(not_playing_players.size()) , " hráčů"));
 		}else {
-			event.disallow(Result.KICK_FULL, "too many players waiting for game");
+			if(not_playing_players.size() < waitingRoomPlayerLimit){
+				event.allow();
+				not_playing_players.addLast(player_uuid);
+				System.out.println(player_uuid);
+				System.out.println(String.join(" " ,"Na hru čeká", Integer.toString(not_playing_players.size()) , "hráčů"));
+			}else {
+				event.disallow(Result.KICK_FULL, "too many players waiting for game");
+			}
 		}
 	}
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		UUID player_uuid = event.getPlayer().getUniqueId();
-		if(not_playing_players.size() > 0) {
-			//should remove the player from linked list
-			not_playing_players.remove(player_uuid);
-			System.out.println(String.join("Na hru čeká ", Integer.toString(not_playing_players.size()) , " hráčů"));
-		}else {
-			System.out.println("error counting players");
+		//todo check if player wasn't playing
+		if(true){
+			if(not_playing_players.size() > 0) {
+				//remove the player from linked list
+				not_playing_players.remove(player_uuid);
+				System.out.println(String.join(" " ,"Na hru čeká", Integer.toString(not_playing_players.size()) , "hráčů"));
+			}else {
+				System.out.println("error counting players");
+			}
 		}
 	}
 }
