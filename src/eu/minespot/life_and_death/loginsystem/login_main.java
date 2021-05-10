@@ -19,7 +19,7 @@ public class login_main implements Listener{
 	private FileConfiguration config;
 	private int waitingRoomPlayerLimit;
 	private LinkedList<Player> not_playing_players = new LinkedList<>();
-	private Logging loging = new Logging();
+	private Logging logging = new Logging();
 	
 	/**
 	 * Class constructor
@@ -51,7 +51,7 @@ public class login_main implements Listener{
 			if(not_playing_players.size() < waitingRoomPlayerLimit){
 				event.allow();
 				not_playing_players.addLast(player);
-				loging.logger("loginsystem","players waiting:" + Integer.toString(not_playing_players.size()));
+				logging.logger("loginsystem","players waiting:" + Integer.toString(not_playing_players.size()));
 			}else {
 				event.disallow(Result.KICK_FULL, "too many players waiting for game");
 			}
@@ -71,9 +71,9 @@ public class login_main implements Listener{
 			if(not_playing_players.size() > 0) {
 				//remove the player from linked list
 				not_playing_players.remove(player);
-				loging.logger("loginsystem","players waiting:" + Integer.toString(not_playing_players.size()));
+				logging.logger("loginsystem","players waiting:" + Integer.toString(not_playing_players.size()));
 			}else {
-				loging.logger("loginsystem","players waiting:" + ChatColor.RED + "error counting players");
+				logging.logger("loginsystem","players waiting:" + ChatColor.RED + "error counting players");
 			}
 		}
 	}
