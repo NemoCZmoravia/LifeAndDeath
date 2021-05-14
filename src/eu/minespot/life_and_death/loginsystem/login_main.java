@@ -73,7 +73,7 @@ public class login_main implements Listener{
 				not_playing_players.remove(player);
 				logging.logger("loginsystem","players waiting:" + Integer.toString(not_playing_players.size()));
 			}else {
-				logging.logger("loginsystem","players waiting:" + ChatColor.RED + "error counting players");
+				logging.logger("loginsystem", ChatColor.RED + "error counting players");
 			}
 		}
 	}
