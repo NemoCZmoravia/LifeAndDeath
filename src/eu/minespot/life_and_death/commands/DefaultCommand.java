@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import eu.minespot.life_and_death.Main;
+import eu.minespot.life_and_death.io_file.Io_file;
 
 
 
@@ -29,6 +30,11 @@ public class DefaultCommand implements CommandExecutor {
 			// info
 			if(args[0].equalsIgnoreCase("info")) {
 				sender.sendMessage(Main.getPlugin(Main.class).getDescription().getVersion()); 
+			}
+			
+			if(args[0].equalsIgnoreCase("saveall")) {
+				Main.getPlugin(Main.class).io.save_all();
+				sender.sendMessage("Config saved.");
 			}
 			
 			//reload
